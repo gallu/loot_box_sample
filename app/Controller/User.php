@@ -28,6 +28,6 @@ class User extends ControllerBase
         }
 
         // 出力
-        return $this->retJson($response, []);
+        return $this->retJson($response, new \ArrayObject());
     }
 }
