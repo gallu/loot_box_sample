@@ -21,6 +21,20 @@ class ControllerBase
         return $this->container->get('renderer')->render($name, $context);
     }
 
+    // jsonでのreturn
+    protected function retJson($response, $data, $status = 200, $error = null)
+    {
+        $json = [];
+        $json['response'] = $data;
+        $json['status_code'] = $status;
+        if (null !== $error) {
+            $json['error_messages'] = $error;
+        }
+        //
+        return $response->withJson($json);
+    }
+
+
 //
     protected $container;
 }
