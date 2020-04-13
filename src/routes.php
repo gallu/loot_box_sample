@@ -28,7 +28,7 @@ $app->group('', function() use ($app) {
     // がちゃ
     $app->group('/loot_box', function() use ($app) {
         $app->get('/list', LootBox::class . ':list');
-        $app->post('/draw/{dick_id}[/{num}]', LootBox::class . ':draw');
+        $app->post('/draw/{dick_id}', LootBox::class . ':draw');
     });
 
     // カード

@@ -16,16 +16,19 @@ class LootBox extends ControllerBase
                 'id' => 1,
                 'name' => '普通のがちゃ',
                 'detail' => 'なんの変哲もないがちゃ',
+                'can_loot' => true,
             ],
             [
                 'id' => 2,
-                'name' => 'よいがちゃ',
-                'detail' => 'よい感じのがちゃ',
+                'name' => '普通のがちゃ 10連',
+                'detail' => '普通のがちゃを10回も引けるよ！！',
+                'can_loot' => true,
             ],
             [
                 'id' => 3,
                 'name' => 'お高いがちゃ',
                 'detail' => 'お高級ながちゃ',
+                'can_loot' => false,
             ],
         ];
 
@@ -37,7 +40,10 @@ class LootBox extends ControllerBase
     public function draw(ServerRequestInterface $request, ResponseInterface $response, $routeArguments)
     {
         $dick_id = intval($routeArguments['dick_id']);
-        $num = abs($routeArguments['num'] ?? 1) % 20; // XXX 雑にvalidate: 0は放置
+        $num = 1;
+        if (2 === $dick_id) {
+            $num = 10;
+        }
         //
         $card_ids = [];
         for($i = 0; $i < $num; ++$i) {
