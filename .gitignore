@@ -6,4 +6,3 @@
 
 # 環境別設定ファイル
 /src/by_environment_settings.php
-/src/by_environment_settings_*.php
